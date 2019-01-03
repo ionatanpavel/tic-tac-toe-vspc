@@ -1,15 +1,10 @@
-
 var atr = 1, vec = [-1, -1, -1,-1, -1, -1,-1, -1, -1], wX = 0, w0 = 0, limit = 4;
 var position = -1;
-
-
-
 
 function hideTemp() {
   duplicateShowHT();
   setTimeout(duplicateHideHT, 350);
 }
-
 
 function PCMoveAux(){
   if (position == 0) {
@@ -41,7 +36,6 @@ function PCMoveAux(){
   }
 }
 
-
 function getSuitablePosition() {
   var pos = tryWin0();
   if (pos != -1) {
@@ -59,10 +53,7 @@ function getSuitablePosition() {
           vecAux.push(i);
         }
       }
-      // for (i = 0; i < vecAux.length; i ++)
-      //   document.getElementById('demo6').innerHTML += vecAux[i];
       var rand = getRandomIntInclusive(0, vecAux.length - 1);
-      //document.getElementById('demo6').innerHTML += ' ' + vecAux[rand];
       return vecAux[rand];
     }
   }
@@ -72,10 +63,8 @@ function getSuitablePosition() {
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1)) + min; 
 }
-
-
 
 function countCompleted() {
   var i, c = 0;
@@ -84,14 +73,12 @@ function countCompleted() {
       c ++;
     }
   }
-  //document.getElementById('demo3').innerHTML = 9- c;
   return 9 - c;
 }
 
 
 
 function randomReset() {
-  //when cliced on Reset button
   var i;
   for (i = 0; i <= 8; i ++)  {
     vec[i] = -1;
@@ -141,7 +128,6 @@ function check() {
   return ok;
 }
 
-
 function duplicateShowHT() {
   var x = document.getElementsByClassName('text1');
   for (var i = 0; i < x.length; i ++)
@@ -152,7 +138,6 @@ function duplicateHideHT() {
   for (var i = 0; i < x.length; i ++)
     x[i].style.display = 'none';
 }
-
 
 function duplicateShow() {
   var x = document.getElementsByClassName('text2');
@@ -166,7 +151,6 @@ function duplicateHide() {
 }
 
 function rowsCheck() {
-  //return  1 if there is any vinner row
   var i, ok = 0;
   for (i = 0; i <= 6; i += 3) {
     var y = vec[i];
@@ -183,12 +167,10 @@ function rowsCheck() {
       }
       }
     }
-    //document.getElementById('demo1').innerHTML ="rows " + ok;
     return ok;
 }
 
 function colsCheck() {
-  //return  1 if there is any vinner column
   var i, ok = 0;
   for (i = 0; i <= 2; i += 1) {
     y = vec[i];
@@ -206,23 +188,19 @@ function colsCheck() {
 
     }
   }
-   //document.getElementById('demo2').innerHTML = "columns " + ok;
-    return ok;
+  return ok;
 }
 
 function allCheck() {
-  //returns 1 if every cell has been clicked
   var i, ok = 1;
   for (i = 0; i <= 8; i += 1) {
     if (vec[i] == -1)
       ok = 0;
     }
-    //document.getElementById('demo3').innerHTML ="All " + ok;
     return ok;
 }
 
 function diagPrincCheck() {
-  //returns 1 if principal diagonal is winner
   var ok = 0;
   if (vec[0] == vec[4] && vec[0] == vec[8] && vec[0] != -1)
     ok = 1;
@@ -235,12 +213,10 @@ function diagPrincCheck() {
       w0 = 1;
     }
   }
-  //document.getElementById("demo4").innerHTML = "diagPrinc " + ok;
   return ok;
 }
 
 function diagSecCheck() {
-  //returns 1 if principal diagonal is winner
   var ok = 0;
   if (vec[2] == vec[4] && vec[2] == vec[6] && vec[2] != -1)
     ok = 1;
@@ -253,8 +229,7 @@ function diagSecCheck() {
       w0 = 1;
     }
   }
-//document.getElementById("demo5").innerHTML = "diagSec " + ok;
-  return ok;
+ return ok;
 }
 
 
@@ -333,10 +308,7 @@ function showDraw() {
 }
 
 function tryTangleX() {
-  //work more in getSuitablePosition
   var i;
-
-  //diagonals (60% changce)
     var nr = getRandomIntInclusive(1, 10);
     if (nr >= 5) {
       if (vec[0] == -1 && vec[4] == 1 && vec[8] == 1) {
@@ -361,7 +333,6 @@ function tryTangleX() {
         return 6;
       }
     }
-    //rows
   nr = getRandomIntInclusive(1, 10);
   if (nr >= 5)  {
       for (i = 0; i <= 6; i += 3) {
@@ -376,7 +347,6 @@ function tryTangleX() {
         }
       }
     }
-  //columns
   nr = getRandomIntInclusive(1, 10);
     if (nr >= 5) {
       for (i = 0; i <= 2; i ++) {
@@ -397,9 +367,7 @@ function tryTangleX() {
 
 
 function tryWin0() {
-  //work more in getSuitablePosition
   var i;
-  //diagonals
       if (vec[0] == -1 && vec[4] == 0 && vec[8] == 0) {
         return 0;
       }
@@ -418,7 +386,6 @@ function tryWin0() {
       if (vec[2] == 0 && vec[4] == 0 && vec[6] == -1) {
         return 6;
       }
-    //rows
       for (i = 0; i <= 6; i += 3) {
         if (vec[i] == -1 && vec[i + 1] == 0 && vec[i + 2] == 0) {
           return i;
@@ -430,7 +397,6 @@ function tryWin0() {
           return i + 2;
         }
       }
-  //columns
       for (i = 0; i <= 2; i ++) {
         if (vec[i] == -1 && vec[i + 3] == 0 && vec[i + 6] == 0) {
           return i;
@@ -444,25 +410,6 @@ function tryWin0() {
       }
   return -1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function assigncell1() {
   if (vec[0] == -1) {
