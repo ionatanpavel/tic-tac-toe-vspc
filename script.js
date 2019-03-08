@@ -109,7 +109,7 @@ function check() {
     ok = 0;
     setTimeout(reset, 0);
   }
-  if (sum == 1) {
+  if (sum != 1) {
     if (wX == 1) {
       duplicateShow();
 
