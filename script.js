@@ -310,7 +310,7 @@ function showDraw() {
 function tryTangleX() {
   var i;
     var nr = getRandomIntInclusive(1, 10);
-    if (nr >= 5) {
+    if (nr >= 6) {
       if (vec[0] == -1 && vec[4] == 1 && vec[8] == 1) {
         return 0;
       }
@@ -322,7 +322,7 @@ function tryTangleX() {
      }
     }
     nr = getRandomIntInclusive(1, 10);
-      if (nr >= 5) {
+      if (nr >= 6) {
       if (vec[2] == -1 && vec[4] == 1 && vec[6] == 1) {
         return 2;
       }
@@ -334,7 +334,7 @@ function tryTangleX() {
       }
     }
   nr = getRandomIntInclusive(1, 10);
-  if (nr >= 5)  {
+  if (nr >= 6)  {
       for (i = 0; i <= 6; i += 3) {
         if (vec[i] == -1 && vec[i + 1] == 1 && vec[i + 2] == 1) {
           return i;
@@ -348,7 +348,7 @@ function tryTangleX() {
       }
     }
   nr = getRandomIntInclusive(1, 10);
-    if (nr >= 5) {
+    if (nr >= 6) {
       for (i = 0; i <= 2; i ++) {
         if (vec[i] == -1 && vec[i + 3] == 1 && vec[i + 6] == 1) {
           return i;
